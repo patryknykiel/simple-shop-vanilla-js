@@ -53,7 +53,7 @@
 
 .product-in-basket {
     display: grid;
-    grid-template: 0.2fr 0.6fr 0.2fr / 0.1fr 0.5fr 0.1fr 0.1fr 0.1fr 0.1;
+    grid-template: 0.1fr 0.5fr 0.1fr / 0.2fr 0.4fr 0.2fr 0.2fr 0.2fr 0.2fr ;
     background-color: pink;
 
 }
@@ -90,11 +90,21 @@ img {
 }
 
 input {
-    width: 80%;
+    width: 25%;
 }
 
 
 .product-in-basket > .manufacturer-name-basket {
-    
+    grid-column-end: span 5;
+}
+
+
+.product-in-basket > .total {
+    grid-column-end: span 7;
+}
+
+.changeQuantity {
+    display: flex;
+    flex-direction: column;
 }
 
