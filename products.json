@@ -15,6 +15,14 @@
             "img": "https://t3.ftcdn.net/jpg/00/56/01/00/360_F_56010077_UA98ADMw95rEB2hCuAlFOJkjdirrAAPV.webp",
             "description": "Description",
             "price": 32
+        },
+
+        "product3": {
+            "id": 3,
+            "manufacturer": "Manufacturer 2",
+            "img": "https://t3.ftcdn.net/jpg/00/56/01/00/360_F_56010077_UA98ADMw95rEB2hCuAlFOJkjdirrAAPV.webp",
+            "description": "Description",
+            "price": 323
         }
     } 
 

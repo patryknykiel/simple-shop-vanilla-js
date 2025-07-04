@@ -8,9 +8,15 @@ fetch('../products.json')
   });
 
 
-
 function addProductsToShop(data) {
 
+    const manufacturersArray = [];
+    const productsArray = [];
+
+
+
+
+    //tutaj jest wyświetlanie produktów z pliku JSON to działa
     Object.entries(data.products).forEach((product) => {
 
         const newDiv = document.createElement("div");
@@ -43,58 +49,134 @@ function addProductsToShop(data) {
         changeQuantityMinus.innerText = "-";
         addToBasket.innerText = "Add to basket";
         addToBasket.classList.add("add-to-basket");
-        
+
+
+
+
+        //Dodanie eventu gdy dodaje do koszyka
         addToBasket.addEventListener('click', (e) => {
-            const newItemInBasketDiv = document.createElement("div");//
-            const manufacturerCheckbox = document.createElement("input");//
-            const manufacturerName = document.createElement("p");//
-            const productCheckbox = document.createElement("input");//
-            const productName = document.createElement("p");//
-            const productPrice = document.createElement("p");//
-            const productQuantity = document.createElement("p");//
-            const changeQuantityBasketDiv = document.createElement("div");//
+            const newItemInBasketDiv = document.createElement("div");
+            const manufacturerCheckbox = document.createElement("input");
+            const manufacturerName = document.createElement("p");
+            const productCheckbox = document.createElement("input");
+            const productName = document.createElement("p");
+            const productPrice = document.createElement("p");
+            const productQuantity = document.createElement("p");
+            const changeQuantityBasketDiv = document.createElement("div");
             const changeQuantityBasketPlus = document.createElement("button");
             const changeQuantityBasketMinus = document.createElement("button");
             const deleteFromBasket = document.createElement("button");
             const manufacturerTotal = document.createElement("p");
 
-        
-            manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
-            productName.innerText = e.target.parentElement.childNodes[1].innerText;
-            productPrice.innerText = data.products[e.target.parentElement.childNodes[1].innerText].price;
-            manufacturerCheckbox.type = "checkbox";
-            productCheckbox.type = "checkbox";
-            changeQuantityBasketPlus.innerText = "+";
-            changeQuantityBasketMinus.innerText = "-";
-            deleteFromBasket.innerText = "Delete";
+            
+            if (manufacturersArray.length === 0) {
+               manufacturersArray.push(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer);
+               productsArray.push(data.products[e.target.parentElement.childNodes[1].innerText].id);
+               manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
+
+               productName.innerText = e.target.parentElement.childNodes[1].innerText;
+               productPrice.innerText = data.products[e.target.parentElement.childNodes[1].innerText].price;
+               manufacturerCheckbox.type = "checkbox";
+               productCheckbox.type = "checkbox";
+               changeQuantityBasketPlus.innerText = "+";
+               changeQuantityBasketMinus.innerText = "-";
+               deleteFromBasket.innerText = "Delete";
+
+               newItemInBasketDiv.classList.add("product-in-basket");
+               manufacturerName.classList.add("manufacturer-name-basket");
+               changeQuantityBasketDiv.classList.add("change-quantity");
+               manufacturerTotal.classList.add("total");
+
+               document.querySelector(".basket-list").appendChild(newItemInBasketDiv);
+               newItemInBasketDiv.appendChild(manufacturerCheckbox);
+               newItemInBasketDiv.appendChild(manufacturerName);
+               newItemInBasketDiv.appendChild(productCheckbox);
+               newItemInBasketDiv.appendChild(productName);
+               newItemInBasketDiv.appendChild(productPrice);
+               newItemInBasketDiv.appendChild(productQuantity);
+               newItemInBasketDiv.appendChild(changeQuantityBasketDiv);
+               changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
+               changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);
+               newItemInBasketDiv.appendChild(deleteFromBasket);
+               newItemInBasketDiv.appendChild(manufacturerTotal);
+            }
+            else {
+              if (manufacturersArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer)) {
 
 
-            newItemInBasketDiv.classList.add("product-in-basket");
-            manufacturerName.classList.add("manufacturer-name-basket");
-            changeQuantityBasketDiv.classList.add("change-quantity");
-            manufacturerTotal.classList.add("total");
+
+               
+
+
+               manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
+
+               productName.innerText = e.target.parentElement.childNodes[1].innerText;
+               productPrice.innerText = data.products[e.target.parentElement.childNodes[1].innerText].price;
+               productCheckbox.type = "checkbox";
+               changeQuantityBasketPlus.innerText = "+";
+               changeQuantityBasketMinus.innerText = "-";
+               deleteFromBasket.innerText = "Delete";
+
+               newItemInBasketDiv.classList.add("product-in-basket");
+               manufacturerName.classList.add("manufacturer-name-basket");
+               changeQuantityBasketDiv.classList.add("change-quantity");
+               manufacturerTotal.classList.add("total");
+
+               document.querySelector(".basket-list").appendChild(newItemInBasketDiv);
+               newItemInBasketDiv.appendChild(productCheckbox);
+               newItemInBasketDiv.appendChild(productName);
+               newItemInBasketDiv.appendChild(productPrice);
+               newItemInBasketDiv.appendChild(productQuantity);
+               newItemInBasketDiv.appendChild(changeQuantityBasketDiv);
+               changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
+               changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);
+               newItemInBasketDiv.appendChild(deleteFromBasket);
+               
+
+              }
+              else {
+                 manufacturersArray.push(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer);
+               manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
+
+               productName.innerText = e.target.parentElement.childNodes[1].innerText;
+               productPrice.innerText = data.products[e.target.parentElement.childNodes[1].innerText].price;
+               manufacturerCheckbox.type = "checkbox";
+               productCheckbox.type = "checkbox";
+               changeQuantityBasketPlus.innerText = "+";
+               changeQuantityBasketMinus.innerText = "-";
+               deleteFromBasket.innerText = "Delete";
+
+               newItemInBasketDiv.classList.add("product-in-basket");
+               manufacturerName.classList.add("manufacturer-name-basket");
+               changeQuantityBasketDiv.classList.add("change-quantity");
+               manufacturerTotal.classList.add("total");
+
+               document.querySelector(".basket-list").appendChild(newItemInBasketDiv);
+               newItemInBasketDiv.appendChild(manufacturerCheckbox);
+               newItemInBasketDiv.appendChild(manufacturerName);
+               newItemInBasketDiv.appendChild(productCheckbox);
+               newItemInBasketDiv.appendChild(productName);
+               newItemInBasketDiv.appendChild(productPrice);
+               newItemInBasketDiv.appendChild(productQuantity);
+               newItemInBasketDiv.appendChild(changeQuantityBasketDiv);
+               changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
+               changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);
+               newItemInBasketDiv.appendChild(deleteFromBasket);
+               newItemInBasketDiv.appendChild(manufacturerTotal);
+              }
+            }
 
 
 
-            document.querySelector(".basket-list").appendChild(newItemInBasketDiv);//
-            newItemInBasketDiv.appendChild(manufacturerCheckbox);//
-            newItemInBasketDiv.appendChild(manufacturerName);//
-            newItemInBasketDiv.appendChild(productCheckbox);//
-            newItemInBasketDiv.appendChild(productName);//
-            newItemInBasketDiv.appendChild(productPrice);//
-            newItemInBasketDiv.appendChild(productQuantity);//
-            newItemInBasketDiv.appendChild(changeQuantityBasketDiv);//
-            changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
-            changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);
-            newItemInBasketDiv.appendChild(deleteFromBasket);//
-            newItemInBasketDiv.appendChild(manufacturerTotal);//
 
+              
 
             
-
-
-
+           
+            console.log(manufacturersArray);
             
+            
+         
         })
 
 
@@ -119,75 +201,6 @@ function addProductsToShop(data) {
 
 
 
-
-
-
-// 
-    
-    /*
-    
-    const productName = e.target.parentElement.querySelector(".product-name").innerText;
-    const manufacturerName = e.target.parentElement.querySelector(".manufacturer-name").innerText;
-    const productPrice = e.target.parentElement.querySelector(".product-price").innerText;
-    
-    const newDiv = document.createElement("div");
-    const pProductName = document.createElement("p");
-    const pManufacturerName = document.createElement("p");
-    const pproductPrice = document.createElement("p");
-    const productQuantity = document.createElement("p");
-    const deleteFromBasketButton = document.createElement("button");
-    const productCheckbox =  document.createElement("input");
-    const manufacturerCheckbox =  document.createElement("input");
-    const changeQuantityDiv = document.createElement("div");
-    const changeQuantityPlus = document.createElement("button");
-    const changeQuantityMinus = document.createElement("button");
-    const total = document.createElement("p");
-
-    pProductName.innerText = productName;
-    pManufacturerName.innerText = manufacturerName;
-    pproductPrice.innerText = productPrice;
-    deleteFromBasketButton.innerText = "Delete";
-    productCheckbox.type = "checkbox";
-    manufacturerCheckbox.type = "checkbox";
-    productQuantity.innerText = 1;
-    changeQuantityPlus.innerText = "+";
-    changeQuantityMinus.innerText = "-";
-    total.innerText = "Total";
-    //TODO musisz ogarnac zeby ilosc ktora jest po lewej dodwala sie po prawej, to samo z total
-
-    newDiv.classList.add("product-in-basket");
-    pManufacturerName.classList.add("manufacturer-name-basket");
-    document.querySelector(".basket-list").appendChild(newDiv);
-    deleteFromBasketButton.classList.add("delete-from-basket");
-    changeQuantityDiv.classList.add("changeQuantity");
-
-    newDiv.appendChild(manufacturerCheckbox);
-    newDiv.appendChild(pManufacturerName);
-    newDiv.appendChild(productCheckbox);
-    newDiv.appendChild(pProductName);
-    newDiv.appendChild(pproductPrice);
-    newDiv.appendChild(productQuantity);
-    newDiv.appendChild(changeQuantityDiv);
-    changeQuantityDiv.appendChild(changeQuantityPlus);
-    changeQuantityDiv.appendChild(changeQuantityMinus);
-    newDiv.appendChild(deleteFromBasketButton);
-    newDiv.appendChild(total);
-
-    document.querySelectorAll(".manufacturer-name-basket").forEach((name) => {
-
-
-    manufacturerInBasket.push(name.innerText);
-    console.log(manufacturerInBasket);
-   })
-
-    document.querySelectorAll(".delete-from-basket").forEach((b) => b.addEventListener('click', (e) => {
-        e.target.parentElement.remove();
-    }));
-    
-
-    manufacturerInBasket = [];
-
-    */
 
 
 
