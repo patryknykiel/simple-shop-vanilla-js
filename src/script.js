@@ -45,13 +45,15 @@ function addProductsToShop(data) {
         description.classList.add("description");
         productPrice.classList.add("product-price");
         quantityInput.type = "text";
+        quantityInput.value = 1;
         changeQuantityPlus.innerText = "+";
         changeQuantityMinus.innerText = "-";
         addToBasket.innerText = "Add to basket";
         addToBasket.classList.add("add-to-basket");
 
 
-
+        changeQuantityPlus.addEventListener('click', () => quantityInput.value++);
+        changeQuantityMinus.addEventListener('click', () => quantityInput.value--);
 
 
 
