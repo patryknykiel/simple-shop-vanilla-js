@@ -95,7 +95,7 @@ input {
 
 
 .product-in-basket > .manufacturer-name-basket {
-    grid-column-end: span 5;
+    grid-column-end: span 6;
 }
 
 
@@ -103,7 +103,7 @@ input {
     grid-column-end: span 7;
 }
 
-.changeQuantity {
+.change-quantity {
     display: flex;
     flex-direction: column;
 }

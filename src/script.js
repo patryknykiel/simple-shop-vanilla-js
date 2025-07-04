@@ -43,6 +43,59 @@ function addProductsToShop(data) {
         changeQuantityMinus.innerText = "-";
         addToBasket.innerText = "Add to basket";
         addToBasket.classList.add("add-to-basket");
+        
+        addToBasket.addEventListener('click', (e) => {
+            const newItemInBasketDiv = document.createElement("div");//
+            const manufacturerCheckbox = document.createElement("input");//
+            const manufacturerName = document.createElement("p");//
+            const productCheckbox = document.createElement("input");//
+            const productName = document.createElement("p");//
+            const productPrice = document.createElement("p");//
+            const productQuantity = document.createElement("p");//
+            const changeQuantityBasketDiv = document.createElement("div");//
+            const changeQuantityBasketPlus = document.createElement("button");
+            const changeQuantityBasketMinus = document.createElement("button");
+            const deleteFromBasket = document.createElement("button");
+            const manufacturerTotal = document.createElement("p");
+
+        
+            manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
+            productName.innerText = e.target.parentElement.childNodes[1].innerText;
+            productPrice.innerText = data.products[e.target.parentElement.childNodes[1].innerText].price;
+            manufacturerCheckbox.type = "checkbox";
+            productCheckbox.type = "checkbox";
+            changeQuantityBasketPlus.innerText = "+";
+            changeQuantityBasketMinus.innerText = "-";
+            deleteFromBasket.innerText = "Delete";
+
+
+            newItemInBasketDiv.classList.add("product-in-basket");
+            manufacturerName.classList.add("manufacturer-name-basket");
+            changeQuantityBasketDiv.classList.add("change-quantity");
+            manufacturerTotal.classList.add("total");
+
+
+
+            document.querySelector(".basket-list").appendChild(newItemInBasketDiv);//
+            newItemInBasketDiv.appendChild(manufacturerCheckbox);//
+            newItemInBasketDiv.appendChild(manufacturerName);//
+            newItemInBasketDiv.appendChild(productCheckbox);//
+            newItemInBasketDiv.appendChild(productName);//
+            newItemInBasketDiv.appendChild(productPrice);//
+            newItemInBasketDiv.appendChild(productQuantity);//
+            newItemInBasketDiv.appendChild(changeQuantityBasketDiv);//
+            changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
+            changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);
+            newItemInBasketDiv.appendChild(deleteFromBasket);//
+            newItemInBasketDiv.appendChild(manufacturerTotal);//
+
+
+            
+
+
+
+            
+        })
 
 
         document.querySelector(".items-list").appendChild(newDiv);
@@ -57,11 +110,21 @@ function addProductsToShop(data) {
         changeQuantityDiv.appendChild(changeQuantityMinus);
         newDiv.appendChild(addToBasket);
 
-    });
+    }
+
+);
+
 };
 
 
-document.querySelectorAll(".add-to-basket").forEach((b) => b.addEventListener('click', (e) => {
+
+
+
+
+
+// 
+    
+    /*
     
     const productName = e.target.parentElement.querySelector(".product-name").innerText;
     const manufacturerName = e.target.parentElement.querySelector(".manufacturer-name").innerText;
@@ -124,6 +187,7 @@ document.querySelectorAll(".add-to-basket").forEach((b) => b.addEventListener('c
 
     manufacturerInBasket = [];
 
-}));
+    */
+
 
 
