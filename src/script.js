@@ -53,6 +53,13 @@ function addProductsToShop(data) {
 
 
 
+
+
+        
+
+
+
+
         //Dodanie eventu gdy dodaje do koszyka
         addToBasket.addEventListener('click', (e) => {
             const newItemInBasketDiv = document.createElement("div");
@@ -67,6 +74,20 @@ function addProductsToShop(data) {
             const changeQuantityBasketMinus = document.createElement("button");
             const deleteFromBasket = document.createElement("button");
             const manufacturerTotal = document.createElement("p");
+
+
+
+
+            // deleteFromBasket.addEventListener('click', (e) => {
+            //   // manufacturersArray.splice(
+            //   //   manufacturersArray.indexOf(e.target.parentElement.childNodes[1].innerText), 1);
+            //   // productsArray.splice(manufacturersArray.indexOf(e.target.parentElement.childNodes[1].innerText), 1)
+            //   // e.target.parentElement.remove();
+
+            // });
+        
+
+
 
             //inicjalizacja
             if (manufacturersArray.length === 0) {
@@ -109,6 +130,7 @@ function addProductsToShop(data) {
                
 
                productsArray.push(data.products[e.target.parentElement.childNodes[1].innerText].id);
+               manufacturersArray.push(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer);
                manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
 
                productName.innerText = e.target.parentElement.childNodes[1].innerText;
@@ -123,7 +145,19 @@ function addProductsToShop(data) {
                changeQuantityBasketDiv.classList.add("change-quantity");
                manufacturerTotal.classList.add("total");
 
-               document.querySelector(".basket-list").appendChild(newItemInBasketDiv);
+               //tu trzeba cos zmienic 
+
+               document.querySelectorAll(".manufacturer-name-basket").forEach((div) => {
+                  if (div.innerText === manufacturerName.innerText) {
+                     div.parentElement.after(newItemInBasketDiv);
+                     console.log("test");
+                   
+               }
+
+               })
+
+
+               //document.querySelector(".basket-list").appendChild(newItemInBasketDiv);
                newItemInBasketDiv.appendChild(productCheckbox);
                newItemInBasketDiv.appendChild(productName);
                newItemInBasketDiv.appendChild(productPrice);
