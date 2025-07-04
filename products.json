@@ -1,0 +1,23 @@
+
+{
+    "products": {
+        "product1": {
+            "id": 1,
+            "manufacturer": "Manufacturer 1",
+            "img": "https://www.collinsdictionary.com/images/thumb/apple_158989157_250.jpg?version=6.0.84",
+            "description": "Description",
+            "price": 23
+        },
+
+        "product2": {
+            "id": 2,
+            "manufacturer": "Manufacturer 1",
+            "img": "https://t3.ftcdn.net/jpg/00/56/01/00/360_F_56010077_UA98ADMw95rEB2hCuAlFOJkjdirrAAPV.webp",
+            "description": "Description",
+            "price": 32
+        }
+    } 
+
+
+}
+
