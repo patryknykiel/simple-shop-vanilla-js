@@ -68,7 +68,7 @@ function addProductsToShop(data) {
             const deleteFromBasket = document.createElement("button");
             const manufacturerTotal = document.createElement("p");
 
-            
+            //inicjalizacja
             if (manufacturersArray.length === 0) {
                manufacturersArray.push(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer);
                productsArray.push(data.products[e.target.parentElement.childNodes[1].innerText].id);
@@ -100,14 +100,15 @@ function addProductsToShop(data) {
                newItemInBasketDiv.appendChild(deleteFromBasket);
                newItemInBasketDiv.appendChild(manufacturerTotal);
             }
+
+            //jest producent nie ma produktu
             else {
-              if (manufacturersArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer)) {
-
-
-
+              if (manufacturersArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer) && 
+              !(productsArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].id))) {
+                console.log("TEST");
                
 
-
+               productsArray.push(data.products[e.target.parentElement.childNodes[1].innerText].id);
                manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
 
                productName.innerText = e.target.parentElement.childNodes[1].innerText;
@@ -134,8 +135,18 @@ function addProductsToShop(data) {
                
 
               }
+
+
+              //jest producent i produkt 
+              else if (manufacturersArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer) && 
+              productsArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].id)) {
+                //TODO tutaj bedziemy zmieniac ilosc ale na razie tego nie mam to zostawiam puste
+              }
+
+
               else {
                  manufacturersArray.push(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer);
+                 productsArray.push(data.products[e.target.parentElement.childNodes[1].innerText].id);
                manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
 
                productName.innerText = e.target.parentElement.childNodes[1].innerText;
@@ -174,6 +185,8 @@ function addProductsToShop(data) {
             
            
             console.log(manufacturersArray);
+            console.log(productsArray);
+
             
             
          
