@@ -78,7 +78,7 @@ function addProductsToShop(data) {
             const manufacturerTotal = document.createElement("p");
 
 
-
+            
 
             // deleteFromBasket.addEventListener('click', (e) => {
             //   // manufacturersArray.splice(
@@ -104,6 +104,8 @@ function addProductsToShop(data) {
                changeQuantityBasketPlus.innerText = "+";
                changeQuantityBasketMinus.innerText = "-";
                deleteFromBasket.innerText = "Delete";
+               productQuantity.innerText = quantityInput.value;
+               //productQuantity.innerText = 
 
                newItemInBasketDiv.classList.add("product-in-basket");
                manufacturerName.classList.add("manufacturer-name-basket");
@@ -141,6 +143,7 @@ function addProductsToShop(data) {
                changeQuantityBasketPlus.innerText = "+";
                changeQuantityBasketMinus.innerText = "-";
                deleteFromBasket.innerText = "Delete";
+               productQuantity.innerText = quantityInput.value;
 
                newItemInBasketDiv.classList.add("product-in-basket");
                manufacturerName.classList.add("manufacturer-name-basket");
@@ -177,6 +180,7 @@ function addProductsToShop(data) {
               else if (manufacturersArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer) && 
               productsArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].id)) {
                 //TODO tutaj bedziemy zmieniac ilosc ale na razie tego nie mam to zostawiam puste
+                //productQuantity.innerText = quantityInput.value;
               }
 
 
@@ -192,6 +196,7 @@ function addProductsToShop(data) {
                changeQuantityBasketPlus.innerText = "+";
                changeQuantityBasketMinus.innerText = "-";
                deleteFromBasket.innerText = "Delete";
+               
 
                newItemInBasketDiv.classList.add("product-in-basket");
                manufacturerName.classList.add("manufacturer-name-basket");
