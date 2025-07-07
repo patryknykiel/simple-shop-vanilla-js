@@ -12,8 +12,9 @@ function addProductsToShop(data) {
 
     const manufacturersArray = [];
     const productsArray = [];
+    let basket = {};
 
-
+    
 
 
     //tutaj jest wyświetlanie produktów z pliku JSON to działa
@@ -63,19 +64,20 @@ function addProductsToShop(data) {
 
 
         //Dodanie eventu gdy dodaje do koszyka
+        //TODO nie musi tworzyc tego zawsze jak wicskam przycisk przeciez nie zawsze dodaje nowy elemnt bo czaedm juz jest na liscie
         addToBasket.addEventListener('click', (e) => {
-            const newItemInBasketDiv = document.createElement("div");
-            const manufacturerCheckbox = document.createElement("input");
-            const manufacturerName = document.createElement("p");
-            const productCheckbox = document.createElement("input");
-            const productName = document.createElement("p");
-            const productPrice = document.createElement("p");
-            const productQuantity = document.createElement("p");
-            const changeQuantityBasketDiv = document.createElement("div");
-            const changeQuantityBasketPlus = document.createElement("button");
-            const changeQuantityBasketMinus = document.createElement("button");
-            const deleteFromBasket = document.createElement("button");
-            const manufacturerTotal = document.createElement("p");
+            // const newItemInBasketDiv = document.createElement("div");
+            // const manufacturerCheckbox = document.createElement("input");
+            // const manufacturerName = document.createElement("p");
+            // const productCheckbox = document.createElement("input");
+            // const productName = document.createElement("p");
+            // const productPrice = document.createElement("p");
+            // const productQuantity = document.createElement("p");
+            // const changeQuantityBasketDiv = document.createElement("div");
+            // const changeQuantityBasketPlus = document.createElement("button");
+            // const changeQuantityBasketMinus = document.createElement("button");
+            // const deleteFromBasket = document.createElement("button");
+            // const manufacturerTotal = document.createElement("p");
 
 
             
@@ -93,9 +95,26 @@ function addProductsToShop(data) {
 
             //inicjalizacja
             if (manufacturersArray.length === 0) {
+                          const newItemInBasketDiv = document.createElement("div");
+            const manufacturerCheckbox = document.createElement("input");
+            const manufacturerName = document.createElement("p");
+            const productCheckbox = document.createElement("input");
+            const productName = document.createElement("p");
+            const productPrice = document.createElement("p");
+            var productQuantity = document.createElement("p");
+            const changeQuantityBasketDiv = document.createElement("div");
+            const changeQuantityBasketPlus = document.createElement("button");
+            const changeQuantityBasketMinus = document.createElement("button");
+            const deleteFromBasket = document.createElement("button");
+            const manufacturerTotal = document.createElement("p");
                manufacturersArray.push(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer);
                productsArray.push(data.products[e.target.parentElement.childNodes[1].innerText].id);
                manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
+
+              //basket = Object({}, {productID: data.products[e.target.parentElement.childNodes[1].innerText].id, quantity: quantityInput.value});
+              //console.log(basket);
+              basket = Object.assign({}, {[data.products[e.target.parentElement.childNodes[1].innerText].id]: quantityInput.value});
+              console.log(basket);
 
                productName.innerText = e.target.parentElement.childNodes[1].innerText;
                productPrice.innerText = data.products[e.target.parentElement.childNodes[1].innerText].price;
@@ -130,8 +149,23 @@ function addProductsToShop(data) {
             else {
               if (manufacturersArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer) && 
               !(productsArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].id))) {
-                console.log("TEST");
+                //console.log("TEST");
+
+                basket = Object.assign(basket, {[data.products[e.target.parentElement.childNodes[1].innerText].id]: quantityInput.value});
+                console.log(basket);
                
+                            const newItemInBasketDiv = document.createElement("div");
+            const manufacturerCheckbox = document.createElement("input");
+            const manufacturerName = document.createElement("p");
+            const productCheckbox = document.createElement("input");
+            const productName = document.createElement("p");
+            const productPrice = document.createElement("p");
+            var productQuantity = document.createElement("p");
+            const changeQuantityBasketDiv = document.createElement("div");
+            const changeQuantityBasketPlus = document.createElement("button");
+            const changeQuantityBasketMinus = document.createElement("button");
+            const deleteFromBasket = document.createElement("button");
+            const manufacturerTotal = document.createElement("p");
 
                productsArray.push(data.products[e.target.parentElement.childNodes[1].innerText].id);
                manufacturersArray.push(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer);
@@ -155,7 +189,7 @@ function addProductsToShop(data) {
                document.querySelectorAll(".manufacturer-name-basket").forEach((div) => {
                   if (div.innerText === manufacturerName.innerText) {
                      div.parentElement.after(newItemInBasketDiv);
-                     console.log("test");
+                     //console.log("test");
                    
                }
 
@@ -180,15 +214,47 @@ function addProductsToShop(data) {
               else if (manufacturersArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer) && 
               productsArray.includes(data.products[e.target.parentElement.childNodes[1].innerText].id)) {
                 //TODO tutaj bedziemy zmieniac ilosc ale na razie tego nie mam to zostawiam puste
-                //productQuantity.innerText = quantityInput.value;
+                //console.log(Object.keys(basket));
+                //  Object.keys(basket).forEach((idObj) => {
+                //    if(idObj == data.products[e.target.parentElement.childNodes[1].innerText].id) {
+                //     basket.idObj = "test";
+                //    }
+                //  })
+
+                //  console.log
+
+
+              basket[[data.products[e.target.parentElement.childNodes[1].innerText].id]] = quantityInput.value;
+              console.log(basket);
+              
+              
+
+              
+
+                //basket = Object.assign(basket, {[data.products[e.target.parentElement.childNodes[1].innerText].id]: quantityInput.value});
+                //console.log(productQuantity);
               }
 
-
+              //nie ma producenta, nie ma produktu 
               else {
+                            const newItemInBasketDiv = document.createElement("div");
+            const manufacturerCheckbox = document.createElement("input");
+            const manufacturerName = document.createElement("p");
+            const productCheckbox = document.createElement("input");
+            const productName = document.createElement("p");
+            const productPrice = document.createElement("p");
+            var productQuantity = document.createElement("p");
+            const changeQuantityBasketDiv = document.createElement("div");
+            const changeQuantityBasketPlus = document.createElement("button");
+            const changeQuantityBasketMinus = document.createElement("button");
+            const deleteFromBasket = document.createElement("button");
+            const manufacturerTotal = document.createElement("p");
                  manufacturersArray.push(data.products[e.target.parentElement.childNodes[1].innerText].manufacturer);
                  productsArray.push(data.products[e.target.parentElement.childNodes[1].innerText].id);
                manufacturerName.innerText = data.products[e.target.parentElement.childNodes[1].innerText].manufacturer;
 
+               basket = Object.assign(basket, {[data.products[e.target.parentElement.childNodes[1].innerText].id]: quantityInput.value});
+                console.log(basket);
                productName.innerText = e.target.parentElement.childNodes[1].innerText;
                productPrice.innerText = data.products[e.target.parentElement.childNodes[1].innerText].price;
                manufacturerCheckbox.type = "checkbox";
