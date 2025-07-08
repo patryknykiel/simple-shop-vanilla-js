@@ -2,6 +2,7 @@ let productsData = null;
 let basket = {};
 
 
+
 async function getProductsFromJSON() {
   const res = await fetch('./products1.json');
   return res.json();
@@ -73,7 +74,7 @@ function addProductToBasket(id, quantity, name, price, manufacturer) {
 
     if (Object.keys(basket).length === 0) {
             
-            basket = Object.assign({}, {[manufacturer]: {[id]: [quantity, name, price]} });
+            basket = Object.assign({}, {[manufacturer]: {[id]: [quantity, name, price, true]} });
         
     }
 
@@ -83,12 +84,12 @@ function addProductToBasket(id, quantity, name, price, manufacturer) {
         
             if (Object.keys(basket).includes(manufacturer)) {
 
-              Object.assign(basket[manufacturer], {[id]: [quantity, name, price]});
+              Object.assign(basket[manufacturer], {[id]: [quantity, name, price, true]});
             }
 
             //producenta ktorego item dodajemy nie ma w koszyku 
             else {
-              basket = Object.assign(basket, {[manufacturer]: {[id]: [quantity, name, price]} });
+              basket = Object.assign(basket, {[manufacturer]: {[id]: [quantity, name, price, true]} });
 
             }
         }
@@ -101,10 +102,15 @@ renderCart(basket);
 }
 
 
-function renderCart(basket) {
+function renderCart() {
+
+  
+
   document.querySelector(".basket-list").innerHTML = null;
 
   Object.keys(basket).forEach((manuf) => {
+
+    let tempArr = [];
 
             const newManufacturerInBasket = document.createElement("div");
             const manufacturerCheckbox = document.createElement("input");
@@ -115,9 +121,14 @@ function renderCart(basket) {
 
             newManufacturerInBasket.classList.add("manufacturer-container");
             manufacturerCheckbox.type = "checkbox";
+
+
+
+            
+            manufacturerCheckbox.addEventListener('change', () => handleManufCheckboxes(manuf, manufacturerCheckbox));
             manufacturerName.innerText = manuf;
             productsInBasketList.classList.add("products-list");
-            manufacturerTotal.innerText = "Total";
+            manufacturerTotal.innerText = 0;
 
             document.querySelector(".basket-list").appendChild(newManufacturerInBasket);
             newManufacturerInBasket.appendChild(manufacturerCheckbox);
@@ -140,6 +151,21 @@ function renderCart(basket) {
 
             productInBasket.classList.add("product-in-basket");
             productCheckbox.type = "checkbox";
+
+           tempArr.push((basket[manuf][id][3]));
+
+
+            if (basket[manuf][id][3]) {
+              productCheckbox.checked = true;
+            }
+
+            else {
+               productCheckbox.checked = false;
+               
+
+            }
+
+            
             productName.innerText = basket[manuf][id][1];
             productName.classList.add("basket-product-name");
             productPrice.innerText = basket[manuf][id][2];
@@ -148,6 +174,18 @@ function renderCart(basket) {
             changeQuantityBasketPlus.innerText = "+";
             changeQuantityBasketMinus.innerText = "-";
             deleteFromBasket.innerText = "Delete";
+            deleteFromBasket.addEventListener('click', () => deleteFromBasketF(id, manuf));
+
+
+            if (basket[manuf][id][3] === true) {
+              manufacturerTotal.innerText = Number(manufacturerTotal.innerText) + basket[manuf][id][2] * basket[manuf][id][0];
+            }
+            
+            changeQuantityBasketPlus.addEventListener('click', () => changeQuantityBasketPlusF(id, manuf));
+            changeQuantityBasketMinus.addEventListener('click', () => changeQuantityBasketMinusF(id, manuf));
+            productCheckbox.addEventListener('change', () => handleProdCheckboxes(productCheckbox, id, manuf));
+
+
 
             productsInBasketList.appendChild(productInBasket);
             productInBasket.appendChild(productCheckbox);
@@ -158,102 +196,109 @@ function renderCart(basket) {
             changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
             changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);
             productInBasket.appendChild(deleteFromBasket);
-            productInBasket.appendChild(manufacturerTotal);
+            productsInBasketList.appendChild(manufacturerTotal);
+
 
     })
+
+      if (tempArr.includes(true)) {
+              manufacturerCheckbox.checked = true;
+            }
+
+            
+            
+      else {
+              manufacturerCheckbox.checked = false;
+            }
+
   })
+
+  console.log(basket);
+
 }
 
 
 
+function deleteFromBasketF(id, manuf) {
+  if (Object.keys(basket[manuf]).length === 1) {
+    delete basket[manuf];
+  }
+  else {
+    delete basket[manuf][id];
+  }
+  renderCart();
+  console.log(basket);
+}
 
 
-    function createManufacturerContainerCase(prod, quan) {
+function changeQuantityBasketPlusF(id, manuf) {
+  basket[manuf][id][0]++;
+  renderCart();
+  console.log(basket);
+}
 
-            const newManufacturerInBasket = document.createElement("div");
-            const manufacturerCheckbox = document.createElement("input");
-            const manufacturerName = document.createElement("p");
-            const productsInBasketList = document.createElement("div");
-            const productInBasket = document.createElement("div");
-            const productCheckbox = document.createElement("input");
-            const productName = document.createElement("p");
-            const productPrice = document.createElement("p");
-            const productQuantity = document.createElement("p");
-            const changeQuantityBasketDiv = document.createElement("div");
-            const changeQuantityBasketPlus = document.createElement("button");
-            const changeQuantityBasketMinus = document.createElement("button");
-            const deleteFromBasket = document.createElement("button");
-            const manufacturerTotal = document.createElement("p");
-
-            newManufacturerInBasket.classList.add("manufacturer-container");
-            manufacturerCheckbox.type = "checkbox";
-            manufacturerName.innerText = prod.manufacturer;
-            productsInBasketList.classList.add("products-list");
-            productInBasket.classList.add("product-in-basket");
-            productCheckbox.type = "checkbox";
-            productName.innerText = prod.name;
-            productName.classList.add("basket-product-name");
-            productPrice.innerText = prod.price;
-            productQuantity.innerText = quan;
-            changeQuantityBasketDiv.classList.add("quantity-basket");
-            changeQuantityBasketPlus.innerText = "+";
-            changeQuantityBasketMinus.innerText = "-";
-            deleteFromBasket.innerText = "Delete";
-            manufacturerTotal.innerText = "Total";
-
-            document.querySelector(".basket-list").appendChild(newManufacturerInBasket);
-            newManufacturerInBasket.appendChild(manufacturerCheckbox);
-            newManufacturerInBasket.appendChild(manufacturerName);
-            newManufacturerInBasket.appendChild(productsInBasketList);
-            productsInBasketList.appendChild(productInBasket);
-            productInBasket.appendChild(productCheckbox);
-            productInBasket.appendChild(productName);
-            productInBasket.appendChild(productPrice);
-            productInBasket.appendChild(productQuantity);
-            productInBasket.appendChild(changeQuantityBasketDiv);
-            changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
-            changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);
-            productInBasket.appendChild(deleteFromBasket);
-            productInBasket.appendChild(manufacturerTotal);
-
-    }
+function changeQuantityBasketMinusF(id, manuf) {
+  basket[manuf][id][0]--;
+  renderCart();
+  console.log(basket);
+}
 
 
-    function createOnlyProductCase(prod, quan) {
-            const productInBasket = document.createElement("div");
-            const productCheckbox = document.createElement("input");
-            const productName = document.createElement("p");
-            const productPrice = document.createElement("p");
-            const productQuantity = document.createElement("p");
-            const changeQuantityBasketDiv = document.createElement("div");
-            const changeQuantityBasketPlus = document.createElement("button");
-            const changeQuantityBasketMinus = document.createElement("button");
-            const deleteFromBasket = document.createElement("button");
-            
-            productInBasket.classList.add("product-in-basket");
-            productCheckbox.type = "checkbox";
-            productName.innerText = prod.name;
-            productPrice.innerText = prod.price;
-            productQuantity.innerText = quan;
-            changeQuantityBasketDiv.classList.add("quantity-basket");
-            changeQuantityBasketPlus.innerText = "+";
-            changeQuantityBasketMinus.innerText = "-";
-            deleteFromBasket.innerText = "Delete";
+function handleProdCheckboxes(productCheckbox, id, manuf) {
 
-          //  document.querySelectorAll(".manufacturer-container > p").forEach(())
-            
+  if (!productCheckbox.checked) {
+    basket[manuf][id][3] = false;
+    console.log(basket);
+  }
 
-    }
+  else if (productCheckbox.checked) {
+    basket[manuf][id][3] = true;
+    console.log(Object.values(basket));
+  }
 
+  renderCart();
+
+}
+
+ function handleManufCheckboxes(manufa, manufaCheckbox) {
+
+   if (!manufaCheckbox.checked) {
+     Object.values(basket[manufa]).forEach((prod) => prod[3] = false);
+   }
+
+   else if (manufaCheckbox.checked) {
+    Object.values(basket[manufa]).forEach((prod) => prod[3] = true);
+   }
+
+
+
+   renderCart();
+
+ }
+
+
+
+ 
 /*
 {
     "Manufacturer 1": {
-        "2": "6",
-        "9": "13"
+        "2": [
+            "1",
+            "Product 2",
+            32
+        ],
+        "9": [
+            "1",
+            "Product 1",
+            23
+        ]
     },
     "Manufacturer 2": {
-        "3": "15"
+        "3": [
+            "1",
+            "Product 3",
+            323
+        ]
     }
 }
 */
-
