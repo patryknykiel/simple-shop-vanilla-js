@@ -104,9 +104,8 @@ renderCart(basket);
 
 function renderCart() {
 
-  
-
   document.querySelector(".basket-list").innerHTML = null;
+  const TotalManufSum = document.createElement("div");
 
   Object.keys(basket).forEach((manuf) => {
 
@@ -118,12 +117,8 @@ function renderCart() {
             const productsInBasketList = document.createElement("div");
             const manufacturerTotal = document.createElement("p");
 
-
             newManufacturerInBasket.classList.add("manufacturer-container");
             manufacturerCheckbox.type = "checkbox";
-
-
-
             
             manufacturerCheckbox.addEventListener('change', () => handleManufCheckboxes(manuf, manufacturerCheckbox));
             manufacturerName.innerText = manuf;
@@ -211,7 +206,13 @@ function renderCart() {
               manufacturerCheckbox.checked = false;
             }
 
+      TotalManufSum.innerText = Number(TotalManufSum.innerText) + Number(manufacturerTotal.innerText);
+      
+
   })
+
+  document.querySelector(".basket-list").appendChild(TotalManufSum);
+  
 
   console.log(basket);
 
