@@ -20,7 +20,7 @@ function addProductsToShop(data) {
     //tutaj jest wyświetlanie produktów z pliku JSON to działa
     Object.entries(data.products).forEach((product) => {
 
-        const newDiv = document.createElement("div");
+        const newDiv = document.createElement("div");//
         const productImg = document.createElement("img");
         const productName = document.createElement("p");
         const manufacturerName = document.createElement("p");
@@ -40,7 +40,7 @@ function addProductsToShop(data) {
         productPrice.innerText = product[1].price;     
 
 
-        newDiv.classList.add("item");
+        newDiv.classList.add("item");//
         productName.classList.add("product-name");
         manufacturerName.classList.add("manufacturer-name");
         description.classList.add("description");
@@ -66,10 +66,13 @@ function addProductsToShop(data) {
         //Dodanie eventu gdy dodaje do koszyka
         //TODO nie musi tworzyc tego zawsze jak wicskam przycisk przeciez nie zawsze dodaje nowy elemnt bo czaedm juz jest na liscie
         addToBasket.addEventListener('click', (e) => {
-            // const newItemInBasketDiv = document.createElement("div");
+            
+          
+          // const newItemInBasketDiv = document.createElement("div");
             // const manufacturerCheckbox = document.createElement("input");
             // const manufacturerName = document.createElement("p");
             // const productCheckbox = document.createElement("input");
+            
             // const productName = document.createElement("p");
             // const productPrice = document.createElement("p");
             // const productQuantity = document.createElement("p");
@@ -95,10 +98,10 @@ function addProductsToShop(data) {
 
             //inicjalizacja
             if (manufacturersArray.length === 0) {
-                          const newItemInBasketDiv = document.createElement("div");
-            const manufacturerCheckbox = document.createElement("input");
-            const manufacturerName = document.createElement("p");
-            const productCheckbox = document.createElement("input");
+                          const newItemInBasketDiv = document.createElement("div");//
+            const manufacturerCheckbox = document.createElement("input");//
+            const manufacturerName = document.createElement("p");//
+            const productCheckbox = document.createElement("input");//
             const productName = document.createElement("p");
             const productPrice = document.createElement("p");
             var productQuantity = document.createElement("p");
@@ -126,18 +129,18 @@ function addProductsToShop(data) {
                productQuantity.innerText = quantityInput.value;
                //productQuantity.innerText = 
 
-               newItemInBasketDiv.classList.add("product-in-basket");
+               newItemInBasketDiv.classList.add("product-in-basket");//
                manufacturerName.classList.add("manufacturer-name-basket");
                changeQuantityBasketDiv.classList.add("change-quantity");
                manufacturerTotal.classList.add("total");
 
-               document.querySelector(".basket-list").appendChild(newItemInBasketDiv);
-               newItemInBasketDiv.appendChild(manufacturerCheckbox);
-               newItemInBasketDiv.appendChild(manufacturerName);
-               newItemInBasketDiv.appendChild(productCheckbox);
-               newItemInBasketDiv.appendChild(productName);
-               newItemInBasketDiv.appendChild(productPrice);
-               newItemInBasketDiv.appendChild(productQuantity);
+               document.querySelector(".basket-list").appendChild(newItemInBasketDiv);//
+               newItemInBasketDiv.appendChild(manufacturerCheckbox);//
+               newItemInBasketDiv.appendChild(manufacturerName);//
+               newItemInBasketDiv.appendChild(productCheckbox);//
+               newItemInBasketDiv.appendChild(productName);//
+               newItemInBasketDiv.appendChild(productPrice);//
+               newItemInBasketDiv.appendChild(productQuantity);//
                newItemInBasketDiv.appendChild(changeQuantityBasketDiv);
                changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
                changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);

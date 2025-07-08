@@ -49,15 +49,6 @@
     background-color: darkseagreen;
 }
 
-
-
-.product-in-basket {
-    display: grid;
-    grid-template: 0.1fr 0.5fr 0.1fr / 0.2fr 0.4fr 0.2fr 0.2fr 0.2fr 0.2fr ;
-    background-color: pink;
-
-}
-
 img {
     width: 50px;
     height: 50px;
@@ -90,26 +81,39 @@ img {
 }
 
 input {
-    width: 100%;
     height: 50%;
+    width: 60%;
+}
+
+.product-price {
+    padding: 0;
 }
 
 
-.product-in-basket > .manufacturer-name-basket {
-    grid-column-end: span 6;
+.manufacturer-container {
+    border: solid;
+    display: grid;
+    grid-template: 0.2fr 0.5fr 0.2fr/ 0.1fr 0.9fr;
 }
 
 
-.product-in-basket > .total {
-    grid-column-end: span 7;
+.products-list {
+    
+    grid-column-end: span 3;
 }
 
-.change-quantity {
+.product-in-basket {
+    
+    display: grid;
+    grid-template: 1fr / 0.1fr 0.5fr 0.15fr 0.15fr 0.1fr 0.2fr ;
+
+}
+
+.quantity-basket {
     display: flex;
     flex-direction: column;
 }
 
-
-.product-price {
-    padding: 0;
+.total-manufacture {
+   grid-column-end: span 4; 
 }
