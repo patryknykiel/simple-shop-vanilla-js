@@ -1,17 +1,22 @@
+
 .app-container {
     display: flex;
     flex-direction: row;
     height: 100vh;
-    margin: 1px 10%;
+    border: 3px solid rgb(167, 167, 167);
+    width: 190vh;
+    
 }
+
+
 
 
 .items-list-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: blue;
     width: 50%;
+    flex-wrap: nowrap;
 }
 
 
@@ -19,88 +24,154 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: brown;
     width: 50%;
 }
 
-.items-list-title {
+
+.basket-title {
+    display: flex;
+    flex-direction: row;
     height: 5%;
-    background-color: grey;
+    width: 100%;
 }
+
+
+
+
+
+.items-list-title  {
+    display: flex;
+    flex-direction: row;
+    height: 5%;
+    width: 100%;
+    align-self: flex-start;
+    align-items: center;
+    
+}
+
+
 
 .items-list {
     width: 100%;
     display: grid;
     grid-template: 1fr 1fr 1fr 1fr / 1fr 1fr 1fr;
     height: 95%;
-    background-color: coral;
 }
 
-.basket-title {
-    height: 5%;
-    background-color: darkmagenta;
-}
 
 .basket-list {
     display: flex;
     flex-direction: column;
     height: 95%;
     width: 100%;
-    background-color: darkseagreen;
 }
 
-img {
-    width: 50px;
-    height: 50px;
-}
 
 .item {
     display: grid;
-    grid-template: 0.2fr 0.2fr 0.4fr 0.2fr / 0.4fr 0.1fr 0.1fr 0.4fr;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border: solid;
-
+    grid-template:  17% 17% 51% 15% / 35% 20% 20% 25% ;
+    margin: 3%;
+    border: 1.5px solid rgb(204, 204, 204);
 }
+
 
 .item > img {
-    grid-row-end: span 2;
-}
-
-.item > .description {
-    grid-column-end: span 4;
+    grid-row-start: span 2;
+    height: 100%;
+    width: 100%;
+    border-right: 1.5px solid rgb(204, 204, 204);
+    border-bottom: 1.5px solid rgb(204, 204, 204);
 }
 
 .item > .product-name {
-    grid-column-end: span 3;
+    grid-column-start: span 3;
+    text-align: center;
+    margin: 10%;
+    font-size: 88%;
+    margin: 0;
+    border-bottom: 1.5px solid rgb(204, 204, 204);
+
+    
 }
 
 .item > .manufacturer-name {
-    grid-column-end: span 3;
+    grid-column-start: span 3;
+    text-align: center;
+    margin-top: 5%;
+    font-size: 88%;
+    margin: 0;
+    
+    
 }
 
-input {
-    height: 50%;
-    width: 60%;
+.item > .description {
+    margin: 0;
+    height: 100%;
+    grid-column-start: span 4;
+    font-size: 88%;
+    border-top: 1.5px solid rgb(204, 204, 204);
 }
 
-.product-price {
+
+.item > .product-price {
+    display: flex;
+    align-items: center;
+    height: auto;
+    width: auto;
+    text-align: start;
+    font-size: 88%;
+    margin: 0;
+    border: 0;
+    border-top: 1.5px solid rgb(204, 204, 204);
+
+}
+
+.item > input {
+    height: auto;
+    width: auto;
     padding: 0;
+    border: 0;
+    border-left: 1.5px solid rgb(204, 204, 204);
+    border-top: 1.5px solid rgb(204, 204, 204);
+    
+    
 }
+
+
+
+.change-quantity {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 0;
+}
+
+
+.change-quantity > button {
+    padding: 0;
+    width: 50%;
+}
+
+
+.add-to-basket {
+    width: auto;
+    padding: 0;
+    height: auto;
+    margin: 0;
+}
+
 
 
 .manufacturer-container {
     border: solid;
     display: grid;
     grid-template: 0.2fr 0.5fr 0.2fr/ 0.1fr 0.9fr;
+    padding: 3%;
 }
 
 
-.products-list {
-    
-    grid-column-end: span 3;
-}
 
 .product-in-basket {
     
@@ -117,3 +188,5 @@ input {
 .total-manufacture {
    grid-column-end: span 4; 
 }
+
+

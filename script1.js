@@ -50,6 +50,7 @@ function addProductsToShop(data) {
         changeQuantityMinus.innerText = "-";
         addToBasket.innerText = "Add to basket";
         addToBasket.classList.add("add-to-basket");
+        changeQuantityDiv.classList.add("change-quantity");
 
         changeQuantityPlus.addEventListener('click', () => quantityInput.value++);
         changeQuantityMinus.addEventListener('click', () => quantityInput.value--);
