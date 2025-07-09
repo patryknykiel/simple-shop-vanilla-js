@@ -1,28 +1,242 @@
 [
-         {
-            "id": 9,
-            "name": "Product 1",
-            "manufacturer": "Manufacturer 1",
-            "img": "https://www.collinsdictionary.com/images/thumb/apple_158989157_250.jpg?version=6.0.84",
-            "description": "Description",
-            "price": 23
-        },
-
-        {
-            "id": 2,
-            "name": "Product 2",
-            "manufacturer": "Manufacturer 1",
-            "img": "https://t3.ftcdn.net/jpg/00/56/01/00/360_F_56010077_UA98ADMw95rEB2hCuAlFOJkjdirrAAPV.webp",
-            "description": "Description",
-            "price": 32
-        },
-
-        {
-            "id": 3,
-            "name": "Product 3",
-            "manufacturer": "Manufacturer 2",
-            "img": "https://t3.ftcdn.net/jpg/00/56/01/00/360_F_56010077_UA98ADMw95rEB2hCuAlFOJkjdirrAAPV.webp",
-            "description": "Description",
-            "price": 323
-        }
+  {
+    "id": 1,
+    "name": "iPhone 14",
+    "manufacturer": "Apple",
+    "img": "https://picsum.photos/id/1011/500/500",
+    "description": "Smartphone with A15 Bionic chip, 6.1-inch Super Retina XDR display, and advanced dual-camera system.",
+    "price": 799
+  },
+  {
+    "id": 2,
+    "name": "Galaxy S23",
+    "manufacturer": "Samsung",
+    "img": "https://picsum.photos/id/1012/500/500",
+    "description": "High-performance smartphone with Snapdragon 8 Gen 2, 6.1-inch Dynamic AMOLED display, and triple camera setup.",
+    "price": 849
+  },
+  {
+    "id": 3,
+    "name": "AirPods Pro 2",
+    "manufacturer": "Apple",
+    "img": "https://picsum.photos/id/1013/500/500",
+    "description": "Wireless earbuds with active noise cancellation, transparency mode, and improved audio quality.",
+    "price": 249
+  },
+  {
+    "id": 4,
+    "name": "ThinkPad X1 Carbon Gen 11",
+    "manufacturer": "Lenovo",
+    "img": "https://picsum.photos/id/1014/500/500",
+    "description": "Lightweight business laptop with 13th Gen Intel Core processors, 14-inch display, and long battery life.",
+    "price": 1299
+  },
+  {
+    "id": 5,
+    "name": "PlayStation 5",
+    "manufacturer": "Sony",
+    "img": "https://picsum.photos/id/1015/500/500",
+    "description": "Next-gen gaming console with 4K graphics, fast SSD, and immersive DualSense controller.",
+    "price": 499
+  },
+  {
+    "id": 6,
+    "name": "OLED55C3PUA",
+    "manufacturer": "LG",
+    "img": "https://picsum.photos/id/1016/500/500",
+    "description": "55-inch 4K OLED TV with vibrant colors, deep blacks, and Dolby Vision IQ support.",
+    "price": 1399
+  },
+  {
+    "id": 7,
+    "name": "Surface Pro 9",
+    "manufacturer": "Microsoft",
+    "img": "https://picsum.photos/id/101/500/500",
+    "description": "Versatile 2-in-1 tablet with 12th Gen Intel Core processors, 13-inch PixelSense display, and detachable keyboard.",
+    "price": 999
+  },
+  {
+    "id": 8,
+    "name": "Dyson V15 Detect",
+    "manufacturer": "Dyson",
+    "img": "https://picsum.photos/id/1018/500/500",
+    "description": "Cordless vacuum with laser dust detection, powerful suction, and multiple attachments.",
+    "price": 699
+  },
+  {
+    "id": 9,
+    "name": "Kindle Paperwhite",
+    "manufacturer": "Amazon",
+    "img": "https://picsum.photos/id/1019/500/500",
+    "description": "E-reader with 6.8-inch display, adjustable warm light, and weeks of battery life.",
+    "price": 139
+  },
+  {
+    "id": 10,
+    "name": "Roomba s9+",
+    "manufacturer": "iRobot",
+    "img": "https://picsum.photos/id/1020/500/500",
+    "description": "Robot vacuum with powerful suction, self-emptying base, and smart mapping technology.",
+    "price": 999
+  },
+  {
+    "id": 11,
+    "name": "Galaxy Watch 6",
+    "manufacturer": "Samsung",
+    "img": "https://picsum.photos/id/1021/500/500",
+    "description": "Smartwatch with advanced health tracking, 1.5-inch AMOLED display, and long battery life.",
+    "price": 299
+  },
+  {
+    "id": 12,
+    "name": "Bose QuietComfort 45",
+    "manufacturer": "Bose",
+    "img": "https://picsum.photos/id/1022/500/500",
+    "description": "Over-ear headphones with world-class noise cancellation and 24-hour battery life.",
+    "price": 329
+  },
+  {
+    "id": 13,
+    "name": "MacBook Air M2",
+    "manufacturer": "Apple",
+    "img": "https://picsum.photos/id/1023/500/500",
+    "description": "Thin and light laptop with M2 chip, 13.6-inch Liquid Retina display, and up to 18 hours of battery life.",
+    "price": 1199
+  },
+  {
+    "id": 14,
+    "name": "Pixel 8",
+    "manufacturer": "Google",
+    "img": "https://picsum.photos/id/1024/500/500",
+    "description": "Smartphone with Google Tensor G3 chip, 6.2-inch OLED display, and advanced AI-powered camera.",
+    "price": 699
+  },
+  {
+    "id": 15,
+    "name": "Series 9 Watch",
+    "manufacturer": "Apple",
+    "img": "https://picsum.photos/id/1025/500/500",
+    "description": "Smartwatch with double tap gesture, brighter display, and advanced health sensors.",
+    "price": 399
+  },
+  {
+    "id": 16,
+    "name": "Xperia 1 V",
+    "manufacturer": "Sony",
+    "img": "https://picsum.photos/id/1026/500/500",
+    "description": "Smartphone with 6.5-inch 4K HDR OLED display, Snapdragon 8 Gen 2, and professional-grade camera system.",
+    "price": 1399
+  },
+  {
+    "id": 17,
+    "name": "WH-1000XM5",
+    "manufacturer": "Sony",
+    "img": "https://picsum.photos/id/1027/500/500",
+    "description": "Wireless noise-canceling headphones with superior sound quality and up to 30 hours of battery life.",
+    "price": 399
+  },
+  {
+    "id": 18,
+    "name": "iPad Air 5",
+    "manufacturer": "Apple",
+    "img": "https://picsum.photos/id/1028/500/500",
+    "description": "Tablet with M1 chip, 10.9-inch Liquid Retina display, and support for Apple Pencil 2.",
+    "price": 599
+  },
+  {
+    "id": 19,
+    "name": "Nest Hub Max",
+    "manufacturer": "Google",
+    "img": "https://picsum.photos/id/1029/500/500",
+    "description": "Smart display with 10-inch HD screen, Google Assistant, and built-in Nest Cam.",
+    "price": 229
+  },
+  {
+    "id": 20,
+    "name": "XPS 13",
+    "manufacturer": "Dell",
+    "img": "https://picsum.photos/id/1/500/500",
+    "description": "Ultraportable laptop with 13.4-inch display, 12th Gen Intel Core processors, and sleek design.",
+    "price": 1099
+  },
+  {
+    "id": 21,
+    "name": "Echo Dot 5th Gen",
+    "manufacturer": "Amazon",
+    "img": "https://picsum.photos/id/1031/500/500",
+    "description": "Compact smart speaker with Alexa, improved audio, and smart home hub functionality.",
+    "price": 49
+  },
+  {
+    "id": 22,
+    "name": "Roku Ultra",
+    "manufacturer": "Roku",
+    "img": "https://picsum.photos/id/1032/500/500",
+    "description": "4K streaming media player with Dolby Vision, HDR10+, and voice remote.",
+    "price": 99
+  },
+  {
+    "id": 23,
+    "name": "Fitbit Charge 6",
+    "manufacturer": "Fitbit",
+    "img": "https://picsum.photos/id/1033/500/500",
+    "description": "Fitness tracker with heart rate monitoring, built-in GPS, and stress management tools.",
+    "price": 159
+  },
+  {
+    "id": 24,
+    "name": "Ninja Foodi Air Fryer",
+    "manufacturer": "Ninja",
+    "img": "https://picsum.photos/id/2/500/500",
+    "description": "6.5-quart air fryer with dual-zone technology for cooking two foods at once.",
+    "price": 199
+  },
+  {
+    "id": 25,
+    "name": "Canon EOS R50",
+    "manufacturer": "Canon",
+    "img": "https://picsum.photos/id/1035/500/500",
+    "description": "Mirrorless camera with 24.2MP sensor, 4K video, and compact design for content creators.",
+    "price": 679
+  },
+  {
+    "id": 26,
+    "name": "JBL Flip 6",
+    "manufacturer": "JBL",
+    "img": "https://picsum.photos/id/1036/500/500",
+    "description": "Portable Bluetooth speaker with powerful sound, waterproof design, and 12-hour battery life.",
+    "price": 129
+  },
+  {
+    "id": 27,
+    "name": "VitaMix 5200 Blender",
+    "manufacturer": "Vitamix",
+    "img": "https://picsum.photos/id/1037/500/500",
+    "description": "High-performance blender with variable speed control and 64-ounce container.",
+    "price": 399
+  },
+  {
+    "id": 28,
+    "name": "Nest Learning Thermostat",
+    "manufacturer": "Google",
+    "img": "https://picsum.photos/id/1038/500/500",
+    "description": "Smart thermostat with auto-schedule, remote control, and energy-saving features.",
+    "price": 249
+  },
+  {
+    "id": 29,
+    "name": "G915 TKL Keyboard",
+    "manufacturer": "Logitech",
+    "img": "https://picsum.photos/id/1039/500/500",
+    "description": "Wireless mechanical gaming keyboard with low-profile switches and customizable RGB lighting.",
+    "price": 229
+  },
+  {
+    "id": 30,
+    "name": "Arlo Pro 5S",
+    "manufacturer": "Arlo",
+    "img": "https://picsum.photos/id/1040/500/500",
+    "description": "Wireless security camera with 2K HDR video, spotlight, and color night vision.",
+    "price": 249
+  }
 ]

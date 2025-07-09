@@ -48,8 +48,9 @@ function addProductsToShop(data) {
         quantityInput.value = 1;
         changeQuantityPlus.innerText = "+";
         changeQuantityMinus.innerText = "-";
-        addToBasket.innerText = "Add to basket";
+        addToBasket.innerText = "Add";
         addToBasket.classList.add("add-to-basket");
+        changeQuantityDiv.classList.add("change-quantity-div");
 
         changeQuantityPlus.addEventListener('click', () => quantityInput.value++);
         changeQuantityMinus.addEventListener('click', () => quantityInput.value--);
@@ -105,6 +106,7 @@ renderCart(basket);
 function renderCart() {
 
   document.querySelector(".basket-list").innerHTML = null;
+  document.querySelector(".basket-total").innerHTML = null;
   const TotalManufSum = document.createElement("div");
 
   Object.keys(basket).forEach((manuf) => {
@@ -124,6 +126,7 @@ function renderCart() {
             manufacturerName.innerText = manuf;
             productsInBasketList.classList.add("products-list");
             manufacturerTotal.innerText = 0;
+            manufacturerTotal.classList.add("manufacturer-total");
 
             document.querySelector(".basket-list").appendChild(newManufacturerInBasket);
             newManufacturerInBasket.appendChild(manufacturerCheckbox);
@@ -169,6 +172,7 @@ function renderCart() {
             changeQuantityBasketPlus.innerText = "+";
             changeQuantityBasketMinus.innerText = "-";
             deleteFromBasket.innerText = "Delete";
+            deleteFromBasket.classList.add("delete");
             deleteFromBasket.addEventListener('click', () => deleteFromBasketF(id, manuf));
 
 
@@ -207,11 +211,12 @@ function renderCart() {
             }
 
       TotalManufSum.innerText = Number(TotalManufSum.innerText) + Number(manufacturerTotal.innerText);
+      TotalManufSum.classList.add("basket-total");
       
 
   })
 
-  document.querySelector(".basket-list").appendChild(TotalManufSum);
+  document.querySelector(".basket-total").innerHTML = TotalManufSum.innerText;
   
 
   console.log(basket);
