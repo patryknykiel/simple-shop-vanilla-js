@@ -357,30 +357,3 @@ function handleProdCheckboxes(productCheckbox, id, manuf) {
    renderCart();
 
  }
-
-
-
- 
-/*
-{
-    "Manufacturer 1": {
-        "2": [
-            "1",
-            "Product 2",
-            32
-        ],
-        "9": [
-            "1",
-            "Product 1",
-            23
-        ]
-    },
-    "Manufacturer 2": {
-        "3": [
-            "1",
-            "Product 3",
-            323
-        ]
-    }
-}
-*/
