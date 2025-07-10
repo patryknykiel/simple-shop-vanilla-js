@@ -44,17 +44,70 @@ function addProductsToShop(data) {
         manufacturerName.classList.add("manufacturer-name");
         description.classList.add("description");
         productPrice.classList.add("product-price");
-        quantityInput.type = "text";
+        quantityInput.type = "number";
         quantityInput.value = 1;
+  
         changeQuantityPlus.innerText = "+";
         changeQuantityMinus.innerText = "-";
         addToBasket.innerText = "Add";
         addToBasket.classList.add("add-to-basket");
         changeQuantityDiv.classList.add("change-quantity-div");
 
-        changeQuantityPlus.addEventListener('click', () => quantityInput.value++);
-        changeQuantityMinus.addEventListener('click', () => quantityInput.value--);
+        changeQuantityPlus.addEventListener('click', () => {
+          
+          if (quantityInput.value > 998) {
+            quantityInput.value = 999;
+          }
+
+          else {
+            quantityInput.value++
+          }
+          
+        });
+        changeQuantityMinus.addEventListener('click', () => {
+          
+          if (quantityInput.value < 2) {
+            quantityInput.value = 1;
+          }
+
+          else {
+            quantityInput.value--;
+
+          }
+          
+          
+        });
         addToBasket.addEventListener('click', () => addProductToBasket(product[1].id, quantityInput.value, product[1].name, product[1].price, product[1].manufacturer));
+
+        
+
+
+        quantityInput.addEventListener('input', () => {
+          quantityInput.addEventListener('keydown', (e) => {
+          if (e.key === '.' || e.key === ',') {
+            e.preventDefault();
+          }
+
+          if (quantityInput.value === '' && e.key === '0') {
+            e.preventDefault();
+          }
+
+
+        });
+          
+        });
+
+        quantityInput.addEventListener('change', () => {
+
+
+          if (quantityInput.value > 998) {
+            quantityInput.value = 999;
+          }
+
+          else if (quantityInput.value < 2) {
+            quantityInput.value = 1;
+          }
+         });
 
         document.querySelector(".items-list").appendChild(newDiv);
         newDiv.appendChild(productImg);
@@ -97,7 +150,7 @@ function addProductToBasket(id, quantity, name, price, manufacturer) {
    
 
 console.log(basket);
-renderCart(basket);
+renderCart();
 
 
 }
@@ -114,10 +167,13 @@ function renderCart() {
     let tempArr = [];
 
             const newManufacturerInBasket = document.createElement("div");
+            const newManufacturerInBasketHeader = document.createElement("div");
             const manufacturerCheckbox = document.createElement("input");
             const manufacturerName = document.createElement("p");
             const productsInBasketList = document.createElement("div");
             const manufacturerTotal = document.createElement("p");
+            const manufacturerTotalDiv = document.createElement("div");
+            const manufacturerTotalText = document.createElement("p");
 
             newManufacturerInBasket.classList.add("manufacturer-container");
             manufacturerCheckbox.type = "checkbox";
@@ -127,10 +183,14 @@ function renderCart() {
             productsInBasketList.classList.add("products-list");
             manufacturerTotal.innerText = 0;
             manufacturerTotal.classList.add("manufacturer-total");
+            newManufacturerInBasketHeader.classList.add("manufacturer-header");
+            manufacturerTotalText.innerText = "Total:";
+            manufacturerTotalDiv.classList.add("manufacturer-total-div");
 
             document.querySelector(".basket-list").appendChild(newManufacturerInBasket);
-            newManufacturerInBasket.appendChild(manufacturerCheckbox);
-            newManufacturerInBasket.appendChild(manufacturerName);
+            newManufacturerInBasket.appendChild(newManufacturerInBasketHeader);
+            newManufacturerInBasketHeader.appendChild(manufacturerCheckbox);
+            newManufacturerInBasketHeader.appendChild(manufacturerName);
             newManufacturerInBasket.appendChild(productsInBasketList);
 
 
@@ -195,7 +255,9 @@ function renderCart() {
             changeQuantityBasketDiv.appendChild(changeQuantityBasketPlus);
             changeQuantityBasketDiv.appendChild(changeQuantityBasketMinus);
             productInBasket.appendChild(deleteFromBasket);
-            productsInBasketList.appendChild(manufacturerTotal);
+            productsInBasketList.after(manufacturerTotalDiv);
+            manufacturerTotalDiv.appendChild(manufacturerTotalText);
+            manufacturerTotalDiv.appendChild(manufacturerTotal);
 
 
     })
@@ -238,15 +300,29 @@ function deleteFromBasketF(id, manuf) {
 
 
 function changeQuantityBasketPlusF(id, manuf) {
-  basket[manuf][id][0]++;
+  
+  if (basket[manuf][id][0] > 998) {
+    basket[manuf][id][0] = 999;
+  }
+
+  else {
+    basket[manuf][id][0]++;
+  }
+  
   renderCart();
-  console.log(basket);
 }
 
 function changeQuantityBasketMinusF(id, manuf) {
-  basket[manuf][id][0]--;
+
+  if (basket[manuf][id][0] < 2) {
+    basket[manuf][id][0] = 1;
+  }
+
+  else {
+    basket[manuf][id][0]--;
+  }
+  
   renderCart();
-  console.log(basket);
 }
 
 

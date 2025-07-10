@@ -28,7 +28,6 @@ p {
 .baskete-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
     outline: solid 2px rgb(0, 0, 0);
     width: 50%;
     height: 100%;
@@ -118,73 +117,6 @@ img {
 }
 
 
-.manufacturer-container {
-    width: 100%;
-    height: 25%;
-    outline: solid 2px rgb(0, 0, 0);
-    display: grid;
-    grid-template: 30% 30% 40% / 10% 90%;
-}
-
-
-
-
-
-.products-list {
-    height: 100%;
-    width: 100%;
-    grid-column-end: span 3;
-}
-
-.product-in-basket {
-    
-    display: grid;
-    grid-template: 1fr / 0.1fr 0.5fr 0.15fr 0.15fr 0.1fr 0.2fr ;
-    width: 100%;
-
-}
-
-.product-in-basket > input {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-}
-
-
-.basket-product-name {
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
-
-
-.quantity-basket {
-    display: flex;
-    flex-direction: column;
-}
-
-.total-manufacture {
-   grid-column-end: span 4; 
-}
-
-
-.manufacturer-container > input {
-    margin: 0;
-    border: 0;
-    
-}
-
-.manufacturer-container > p {
-    font-size: 25px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    margin: 0;
-    
-}
-
-
 .change-quantity-div {
     display: flex;
     flex-direction: column;
@@ -221,6 +153,66 @@ img {
 
 }
 
+.manufacturer-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.manufacturer-header {
+    display: grid;
+    grid-template: 100% / 6% 94% ;
+    border-top: 1px black solid;
+}
+
+.manufacturer-header > p {
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+
+}
+
+
+.products-list {
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+.product-in-basket {
+    display: grid;
+    grid-template: 100% / 4% 41% 20% 15% 10% 10%;
+    width: 100%;
+    margin-top: 10px;
+    outline: 1px black solid
+    
+    
+    
+}
+
+.quantity-basket {
+    display: flex;
+    flex-direction: column;
+}
+
+.quantity-basket > button {
+    height: 50%;
+}
+
 .manufacturer-total {
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: center;
+}
+
+.manufacturer-total-div {
+    display: flex;
+}
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
